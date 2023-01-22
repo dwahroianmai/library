@@ -12,7 +12,8 @@ let div;
 let titleHeader;
 let authorHeader;
 let pagesNumber;
-let readpara;
+let readPara;
+let remove;
 
 function isRead() {
   if (read.checked) {
@@ -36,9 +37,52 @@ submit.addEventListener("click", () => {
 
 function showBooks() {
   div = document.createElement("div");
+  div.setAttribute(
+    "style",
+    "background-color: aliceblue; border-radius: 16px; width: 200px; height: 200px; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center; margin: 20px;"
+  );
+  remove = document.createElement("img");
+  remove.setAttribute("src", "./img/close-circle-outline.svg");
+  remove.setAttribute(
+    "style",
+    "align-self: flex-end; width: 20px; height: 20px; margin-top: 10px; margin-right: 10px;"
+  );
   titleHeader = document.createElement("h2");
   titleHeader.textContent = bookList[bookList.length - 1].title;
+  titleHeader.setAttribute(
+    "style",
+    "font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 22px;"
+  );
+  authorHeader = document.createElement("h2");
+  authorHeader.textContent = bookList[bookList.length - 1].author;
+  authorHeader.setAttribute(
+    "style",
+    "font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 22px;"
+  );
+  pagesNumber = document.createElement("h2");
+  pagesNumber.textContent = "Pages: " + bookList[bookList.length - 1].pages;
+  pagesNumber.setAttribute(
+    "style",
+    "font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 22px;"
+  );
+  readPara = document.createElement("p");
+  readPara.textContent = bookList[bookList.length - 1].read;
+  if (readPara.textContent === "Read") {
+    readPara.setAttribute(
+      "style",
+      "font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 600; color: green;"
+    );
+  } else {
+    readPara.setAttribute(
+      "style",
+      "font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 600; color: red;"
+    );
+  }
+  div.appendChild(remove);
   div.appendChild(titleHeader);
+  div.appendChild(authorHeader);
+  div.appendChild(pagesNumber);
+  div.appendChild(readPara);
   books.appendChild(div);
 }
 
