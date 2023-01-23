@@ -175,14 +175,14 @@ img:active {
     max-height: 100px;
     width: 100vw;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: 13px;
   }
   h1 {
     font-size: 30px;
     margin-left: 10px;
-    margin-top: 0;
+    margin-top: 20px;
   }
   button {
     width: 80px;
@@ -191,6 +191,7 @@ img:active {
   }
   .buttons {
     flex-direction: row;
+    margin-top: 20px;
   }
 
   .options {
@@ -206,6 +207,7 @@ img:active {
     display: flex;
     gap: 2px;
     flex-direction: column;
+    margin-top: 20px;
   }
   .strip {
     width: 20px;
@@ -221,5 +223,13 @@ img:active {
   }
   .add {
     width: 100px;
+  }
+  form {
+    position: absolute;
+    top: 20%;
+    left: 22%;
+  }
+  .books {
+    justify-content: center;
   }
 }
