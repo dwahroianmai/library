@@ -19,6 +19,7 @@ let pagesNumber;
 let readPara;
 let remove;
 let optionsDiv;
+let readToggle;
 
 function isRead() {
   if (read.checked) {
@@ -99,7 +100,26 @@ function addRemove() {
   });
 }
 
-function addReadToggle() {}
+function addReadToggle() {
+  readToggle = document.createElement("button");
+  if (readPara.textContent === "Read") {
+    readToggle.textContent = "Not read";
+  } else {
+    readToggle.textContent = "Read";
+  }
+  div.appendChild(readToggle);
+  readToggle.addEventListener("click", () => {
+    if (readToggle.textContent === "Not read") {
+      readPara.textContent = "Not read";
+      readPara.style.color = "red";
+      readToggle.textContent = "Read";
+    } else {
+      readPara.textContent = "Read";
+      readPara.style.color = "green";
+      readToggle.textContent = "Not read";
+    }
+  });
+}
 
 more.addEventListener("click", () => {
   if (options.style.display === "none" && footer.style.display === "none") {
@@ -118,15 +138,7 @@ more.addEventListener("click", () => {
 });
 
 addBook.addEventListener("click", () => {
-  if (
-    bookInfo.style.display === "none" &&
-    footer.style.display !== "none" &&
-    options.style.display !== "none"
-  ) {
-    bookInfo.style.display = "block";
-    footer.style.display = "none";
-    options.style.display = "none";
-  } else if (bookInfo.style.display === "none") {
+  if (bookInfo.style.display === "none") {
     bookInfo.style.display = "block";
   } else {
     bookInfo.style.display = "none";
