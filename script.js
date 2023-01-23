@@ -6,6 +6,10 @@ const pages = document.querySelector("#pages");
 const read = document.querySelector("#read");
 const submit = document.querySelector("#submit");
 const books = document.querySelector(".books");
+const more = document.querySelector(".more");
+const options = document.querySelector(".options");
+const footer = document.querySelector(".footer");
+const sidebar = document.querySelector(".sidebar");
 
 let bookList = [];
 let div;
@@ -14,6 +18,7 @@ let authorHeader;
 let pagesNumber;
 let readPara;
 let remove;
+let optionsDiv;
 
 function isRead() {
   if (read.checked) {
@@ -96,8 +101,32 @@ function addRemove() {
 
 function addReadToggle() {}
 
+more.addEventListener("click", () => {
+  if (options.style.display === "none" && footer.style.display === "none") {
+    options.setAttribute(
+      "style",
+      "display: flex; position: absolute; top: 15%; background-color: white; align-items: center; width: 219.92px"
+    );
+    footer.setAttribute(
+      "style",
+      "display: flex; position: absolute; top: 37%; background-color: white;"
+    );
+  } else {
+    footer.style.display = "none";
+    options.style.display = "none";
+  }
+});
+
 addBook.addEventListener("click", () => {
-  if (bookInfo.style.display === "none") {
+  if (
+    bookInfo.style.display === "none" &&
+    footer.style.display !== "none" &&
+    options.style.display !== "none"
+  ) {
+    bookInfo.style.display = "block";
+    footer.style.display = "none";
+    options.style.display = "none";
+  } else if (bookInfo.style.display === "none") {
     bookInfo.style.display = "block";
   } else {
     bookInfo.style.display = "none";
