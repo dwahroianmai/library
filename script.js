@@ -10,6 +10,7 @@ const more = document.querySelector(".more");
 const options = document.querySelector(".options");
 const footer = document.querySelector(".footer");
 const sidebar = document.querySelector(".sidebar");
+const search = document.querySelector("#search");
 
 let bookList = [];
 let div;
@@ -108,15 +109,15 @@ function addReadToggle() {
     readToggle.textContent = "Read";
   }
   div.appendChild(readToggle);
-  readToggle.addEventListener("click", () => {
-    if (readToggle.textContent === "Not read") {
-      readPara.textContent = "Not read";
-      readPara.style.color = "red";
-      readToggle.textContent = "Read";
+  readToggle.addEventListener("click", (e) => {
+    if (e.target.textContent === "Not read") {
+      e.target.previousElementSibling.textContent = "Not read";
+      e.target.previousElementSibling.style.color = "red";
+      e.target.textContent = "Read";
     } else {
-      readPara.textContent = "Read";
-      readPara.style.color = "green";
-      readToggle.textContent = "Not read";
+      e.target.previousElementSibling.textContent = "Read";
+      e.target.previousElementSibling.style.color = "green";
+      e.target.textContent = "Not read";
     }
   });
 }
@@ -134,6 +135,26 @@ more.addEventListener("click", () => {
   } else {
     footer.style.display = "none";
     options.style.display = "none";
+  }
+});
+
+search.addEventListener("keyup", (e) => {
+  console.log(e.target.value);
+  let all = Array.from(books.children);
+  let titleSearch;
+  let authorSearch;
+  for (let i = 0; i < all.length; i++) {
+    titleSearch = all[i].firstChild.nextSibling.textContent.toUpperCase();
+    authorSearch =
+      all[i].firstChild.nextSibling.nextSibling.textContent.toUpperCase();
+    if (
+      titleSearch.includes(e.target.value.toUpperCase()) ||
+      authorSearch.includes(e.target.value.toUpperCase())
+    ) {
+      all[i].style.display = "flex";
+    } else {
+      all[i].style.display = "none";
+    }
   }
 });
 

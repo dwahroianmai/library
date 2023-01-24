@@ -101,6 +101,19 @@ input::placeholder {
   font-family: "Poppins", sans-serif;
 }
 
+.options input {
+  appearance: none;
+  border: none;
+  border-radius: 16px;
+  padding: 7px;
+  background-color: white;
+  font-size: 16px;
+}
+
+.options input:focus {
+  outline: none;
+}
+
 form > input {
   appearance: none;
   border: none;
