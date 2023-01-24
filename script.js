@@ -37,6 +37,17 @@ function Book(title, author, pages, read) {
   this.read = isRead();
 }
 
+window.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    bookList.push(
+      new Book(title.value, author.value, pages.value, read.checked)
+    );
+    showBooks();
+    addRemove();
+    addReadToggle();
+  }
+});
+
 submit.addEventListener("click", () => {
   bookList.push(new Book(title.value, author.value, pages.value, read.checked));
   showBooks();
